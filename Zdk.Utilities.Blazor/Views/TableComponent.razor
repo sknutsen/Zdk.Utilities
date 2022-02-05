@@ -1,0 +1,37 @@
+﻿@typeparam TItem
+
+<table class="table" style="text-align: center;">
+    <thead>
+        <tr>@TableHeader</tr>
+    </thead>
+</table>
+<div style="max-height: 50vh; overflow-y: auto;">
+    <table class="table" style="text-align: center;">
+        <tbody>
+            @foreach (var item in Items)
+            {
+                <tr>@RowTemplate(item)</tr>
+            }
+        </tbody>
+    </table>
+</div>
+<table class="table" style="text-align: center;">
+    <tfoot>
+        <tr>@TableFooter</tr>
+    </tfoot>
+</table>
+
+@code {
+    [Parameter]
+    public RenderFragment TableHeader { get; set; }
+
+    [Parameter]
+    public RenderFragment<TItem> RowTemplate { get; set; }
+
+    [Parameter]
+    public RenderFragment TableFooter { get; set; }
+
+    [Parameter]
+    public IReadOnlyList<TItem> Items { get; set; }
+
+}

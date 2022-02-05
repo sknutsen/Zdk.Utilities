@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@using Zdk.Utilities.Blazor.Constants
+
+<label class="checkbox-label" style="@(IsSelected())">
+    <input type="checkbox" value="@Value" checked="@Value" @onclick="Click" />
+    @Text
+</label>
+
+@code {
+    [Parameter]
+    public bool Checked { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> CheckedChanged { get; set; }
+
+    private bool Value
+    {
+        get => Checked;
+        set => CheckedChanged.InvokeAsync(value);
+    }
+
+    [Parameter]
+    public string Text { get; set; } = "";
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> Click { get; set; }
+
+    private string IsSelected()
+    {
+        return Checked ? StyleTexts.Selected : StyleTexts.NotSelected;
+    }
+
+}
