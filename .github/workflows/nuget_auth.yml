@@ -24,20 +24,20 @@ jobs:
         dotnet-version: 6.x
 
     - name: Restore
-      run: dotnet restore ${{ PROJECT_PATH }}
+      run: dotnet restore ${{ env.PROJECT_PATH }}
 
     - name: Build
-      run: dotnet build ${{ PROJECT_PATH }} --no-restore --configuration Release
+      run: dotnet build ${{ env.PROJECT_PATH }} --no-restore --configuration Release
 
     - name: Version
       id: version
       uses: battila7/get-version-action@v2
 
     - name: Pack
-      run: dotnet pack ${{ PROJECT_PATH }} --no-restore --no-build --configuration Release --include-symbols -p:PackageVersion=${{ steps.version.outputs.version-without-v }} --output ${{ OUTPUT_DIR }}
+      run: dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --configuration Release --include-symbols -p:PackageVersion=${{ steps.version.outputs.version-without-v }} --output ${{ env.OUTPUT_DIR }}
 
     - name: Authenticate
-      run: dotnet nuget add source --username ${{ github.repository_owner }} --password ${{ secrets.PAT }} --store-password-in-clear-text --name github ${{ SOURCE_URL }}
+      run: dotnet nuget add source --username ${{ github.repository_owner }} --password ${{ secrets.PAT }} --store-password-in-clear-text --name github ${{ env.SOURCE_URL }}
 
     - name: Push
-      run: dotnet nuget push ${{ OUTPUT_DIR }}\*.nupkg --source github
+      run: dotnet nuget push ${{ env.OUTPUT_DIR }}\*.nupkg --source github
