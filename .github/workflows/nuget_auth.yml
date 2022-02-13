@@ -37,7 +37,7 @@ jobs:
       run: dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --configuration Release --include-symbols -p:PackageVersion=${{ steps.version.outputs.version-without-v }} --output ${{ env.OUTPUT_DIR }}
 
     - name: Authenticate
-      run: dotnet nuget add source --username ${{ github.repository_owner }} --password ${{ secrets.PAT }} --store-password-in-clear-text --name github ${{ env.SOURCE_URL }}
+      run: dotnet nuget add source --username ${{ github.repository_owner }} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github ${{ env.SOURCE_URL }}
 
     - name: Push
       run: dotnet nuget push ${{ env.OUTPUT_DIR }}/*.nupkg --source github
