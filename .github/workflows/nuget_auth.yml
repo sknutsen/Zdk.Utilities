@@ -6,7 +6,7 @@ on:
     - 'v*'
 
 env:
-  PROJECT_PATH: Zdk.Utilities.Authentication/Zdk.Utilities.Authentication.csproj
+  PROJECT_PATH: 'Zdk.Utilities.Authentication/Zdk.Utilities.Authentication.csproj'
   OUTPUT_DIR: ${{ github.workspace }}\output
   SOURCE_URL: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
 
