@@ -7,7 +7,7 @@ on:
 
 env:
   PROJECT_PATH: 'Zdk.Utilities.Authentication/Zdk.Utilities.Authentication.csproj'
-  OUTPUT_DIR: ${{ github.workspace }}\output
+  OUTPUT_DIR: '${{ github.workspace }}/output'
   SOURCE_URL: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
 
 jobs:
@@ -40,4 +40,4 @@ jobs:
       run: dotnet nuget add source --username ${{ github.repository_owner }} --password ${{ secrets.PAT }} --store-password-in-clear-text --name github ${{ env.SOURCE_URL }}
 
     - name: Push
-      run: dotnet nuget push ${{ env.OUTPUT_DIR }}\*.nupkg --source github
+      run: dotnet nuget push ${{ env.OUTPUT_DIR }}/*.nupkg --source github
