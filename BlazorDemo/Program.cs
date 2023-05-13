@@ -3,7 +3,6 @@ using BlazorDemo.Data;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Zdk.Utilities.Authentication;
-using Zdk.Utilities.Authentication.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 

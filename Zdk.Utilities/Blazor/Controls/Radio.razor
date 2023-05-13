@@ -1,0 +1,12 @@
+﻿@namespace Zdk.Utilities.Blazor
+@typeparam TItem
+
+<div style="display: flex;">
+    @foreach (var choice in Options)
+    {
+        <label class="checkbox-label" style="@(IsSelected(choice.Value))">
+            <input name="" type="radio" value="@choice.Value" checked="@Value.Equals(choice.Value)" @onchange="@(() => Value = choice.Value)" />
+            @choice.Key
+        </label>
+    }
+</div>

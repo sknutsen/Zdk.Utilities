@@ -1,0 +1,6 @@
+﻿@namespace Zdk.Utilities.Blazor
+
+<label class="checkbox-label" style="@(IsSelected())">
+    <input type="checkbox" value="@Value" checked="@Value" @onclick="Click" />
+    @Text
+</label>

@@ -4,10 +4,13 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+	<BaseOutputPath>Debug</BaseOutputPath>
+	<BaseIntermediateOutputPath>Debug\obj</BaseIntermediateOutputPath>
+	<PackageOutputPath>Release</PackageOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Zdk.Utilities.Authentication\Zdk.Utilities.Authentication.csproj" />
+    <ProjectReference Include="..\Zdk.Utilities\Zdk.Utilities.csproj" />
   </ItemGroup>
 
 </Project>
